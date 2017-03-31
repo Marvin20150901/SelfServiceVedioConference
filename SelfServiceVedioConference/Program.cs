@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ using SuperSocket.SocketBase;
 using SuperSocket.Common;
 using SuperSocket.Facility;
 using SuperSocket.SocketBase.Protocol;
+using Utilities.IO;
+using FileInfo = Utilities.IO.FileInfo;
 
 namespace SelfServiceVedioConference
 {
@@ -53,10 +57,46 @@ namespace SelfServiceVedioConference
               Console.ReadKey();
               */
 
-//            var temp = Utilities.Configuration.ConfigurationManager.Get<DeviceConfig>("DeviceConfig");
-//            temp.Load();
+             
+//            Console.WriteLine("{0}",temp.DeviceReceiveFilterTypes);
 
-//           Console.WriteLine("{0}",temp.DeviceReceiveFilterTypes);
+
+            /*
+          var jsonFile=new FileInfo(@"./config/DeviceConfig.json");
+            if (jsonFile.Exists)
+            {
+                Console.WriteLine("have it");
+            }
+            else
+            {
+                Console.WriteLine("dont have it");
+            }
+
+           
+
+            var jsonSerialize=new Utilities.IO.Serializers.Default.JSONSerializer();
+            var deviceConfig = jsonSerialize.Deserialize(typeof(DeviceConfig), jsonFile);
+
+            DeviceConfig dv=deviceConfig as DeviceConfig;
+            if (dv !=null)
+            {
+                Console.WriteLine("{0}", dv.DeviceReceiveFilterTypes[0].ReceiveFilterType);
+            }
+            else
+            {
+                Console.WriteLine("it is a error");
+            }
+            
+            */
+
+
+            string t = "\r\n** end";
+            string o = "*e UserInterface Extensions Event Changed Signal: \"togglebutton:on\"\r\n** end";
+
+
+            Console.WriteLine(o.IndexOf(t));
+
+
 
 
             Console.ReadLine();

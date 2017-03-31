@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using SelfServiceVedioConference.Device;
@@ -9,24 +10,55 @@ using Utilities.Configuration;
 
 namespace SelfServiceVedioConference.config
 {
-    public class DeviceConfig:JSONConfig<DeviceConfig>
+
+
+
+
+    [DataContract]
+    public class DeviceReceiveFilterTypesItem
     {
-        public string ConfigName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+         
+        [DataMember]
+        public string DeviceType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         
-        public List<string> DeviceTypes { get; set; }
-
-        public List<DeviceReceiveFilterTypeItem> DeviceReceiveFilterTypes { get; set; }
-
-        public override string Name => "DeviceConfig";
-        protected override string ConfigFileLocation => "./config/DeviceConfig.json";
+        [DataMember]
+        public string ReceiveFilterType { get; set; }
     }
 
 
-    public class DeviceReceiveFilterTypeItem
+    [DataContract]
+    public class DeviceConfig
     {
-        public string DeviceType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string ConfigName { get; set; }
 
-        public string ReceiveFilterType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>        
+        [DataMember]
+        public List<string> DeviceTypes { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<string> ReceiveFilterTypes { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<DeviceReceiveFilterTypesItem> DeviceReceiveFilterTypes { get; set; }
     }
 
 
