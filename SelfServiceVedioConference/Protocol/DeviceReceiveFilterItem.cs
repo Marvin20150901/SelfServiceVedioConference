@@ -3,8 +3,7 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SelfServiceVedioConference.Protocol
 {
-    public class DeviceReceiveFilterItem<TRequestInfo>:IDeviceReceiveFilterItem<TRequestInfo>
-        where TRequestInfo:IRequestInfo
+    public class DeviceReceiveFilterItem:IDeviceReceiveFilterItem
     {
         /// <summary>
         /// 
@@ -14,6 +13,17 @@ namespace SelfServiceVedioConference.Protocol
         /// <summary>
         /// 
         /// </summary>
-        public IReceiveFilter<TRequestInfo> ReceiveFilter { get; set; }
+        public IReceiveFilter<IRequestInfo> ReceiveFilter { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="receiveFilter"></param>
+        public DeviceReceiveFilterItem (string type, IReceiveFilter<IRequestInfo> receiveFilter)
+        {
+            this.DeviceTypeItem = type;
+            this.ReceiveFilter = receiveFilter;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿{
   "ConfigName": "Faw-vw Vedio Conference",
-  "DeviceTypes": [ "Cisco MX800", "Cisco MX300", "Cisco SX800", "Sharp DX450", "Control Center" ],
+  "DeviceTypes": [ "Cisco MX800", "Cisco MX300", "Cisco SX80", "Sharp D540XA", "Vedio Switch" ],
+  "ReceiveFilterTypes": ["ReceiveFilterForCiscoMx","ReceiveFilterForCiscoSx","ReceiveFilterForSharpD540","ReceiveFilterForVedioSwitch"], 
   "DeviceReceiveFilterTypes": [
     {
       "DeviceType": "Cisco MX800",

@@ -115,13 +115,17 @@
     <Compile Include="Protocol\IReceiveFilterList.cs" />
     <Compile Include="Protocol\ProtocolReceiveFilterFactory.cs" />
     <Compile Include="Protocol\ReceiveFilterList.cs" />
+    <Compile Include="Protocol\ReceiveFilters\CiscoMxSxSeries\CiscoCommuRequestInfo.cs" />
+    <Compile Include="Protocol\ReceiveFilters\CiscoMxSxSeries\CiscoInRoomControlReceiveFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\App.config" />
     <Content Include="config\log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="config\DeviceConfig.json" />
+    <Content Include="config\DeviceConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="config\log4net.unix.config" />
     <None Include="packages.config" />
     <None Include="supersocket.cmd" />
@@ -131,6 +135,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

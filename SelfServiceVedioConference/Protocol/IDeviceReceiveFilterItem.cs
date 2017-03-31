@@ -4,8 +4,7 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SelfServiceVedioConference.Protocol
 {
-    public interface IDeviceReceiveFilterItem<TRequestInfo>
-        where TRequestInfo:IRequestInfo
+    public interface IDeviceReceiveFilterItem        
     {
 
         /// <summary>
@@ -16,6 +15,6 @@ namespace SelfServiceVedioConference.Protocol
         /// <summary>
         /// Device Type Protocol 
         /// </summary>
-        IReceiveFilter<TRequestInfo> ReceiveFilter { get; }
+        IReceiveFilter<IRequestInfo> ReceiveFilter { get; }
     }
 }
