@@ -53,10 +53,10 @@ namespace SelfServiceVedioConference
               Console.ReadKey();
               */
 
-            var temp = Utilities.Configuration.ConfigurationManager.Get<DeviceConfig>("DeviceConfig.json");
-            temp.Load();
+//            var temp = Utilities.Configuration.ConfigurationManager.Get<DeviceConfig>("DeviceConfig");
+//            temp.Load();
 
-            Console.WriteLine("{0}",temp.DeviceReceiveFilterTypes);
+//           Console.WriteLine("{0}",temp.DeviceReceiveFilterTypes);
 
 
             Console.ReadLine();
