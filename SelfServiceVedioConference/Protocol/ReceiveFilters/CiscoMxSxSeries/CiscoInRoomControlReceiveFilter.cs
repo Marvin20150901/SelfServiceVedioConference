@@ -5,7 +5,7 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
 {
-    public class CiscoInRoomControlReceiveFilter:TerminatorReceiveFilter<CiscoCommuRequestInfo>
+    public class CiscoInRoomControlReceiveFilter:TerminatorReceiveFilter<VedioConferenceRequestInfo>
     {
 
 
@@ -32,21 +32,34 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
             
         }
 
-        protected override CiscoCommuRequestInfo ProcessMatchedRequest(byte[] data, int offset, int length)
+        protected override VedioConferenceRequestInfo ProcessMatchedRequest(byte[] data, int offset, int length)
         {
             //throw new System.NotImplementedException();
             string dataStr = string.Empty;
             string[] parasStr=new string[] {};
-            CiscoCommuRequestInfo ciscoCommuRequestInfo = null;
+            VedioConferenceRequestInfo requestInfo = null;
 
             if (length!=0)
             {
                 dataStr = Encoding.ASCII.GetString(data, offset, length);
                 parasStr = dataStr.Split(ParameterSpliters, StringSplitOptions.RemoveEmptyEntries);
+
+                if (parasStr[0]==@"*e")
+                {
+                    
+                }
+                else if (parasStr[0]==@"*s")
+                {
+                    
+                }
+                else
+                {
+                    
+                }
             }
 
 
-            return new CiscoCommuRequestInfo();
+            return requestInfo;
         }
     }
 }

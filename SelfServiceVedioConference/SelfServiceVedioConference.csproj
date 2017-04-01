@@ -115,8 +115,10 @@
     <Compile Include="Protocol\IReceiveFilterList.cs" />
     <Compile Include="Protocol\ProtocolReceiveFilterFactory.cs" />
     <Compile Include="Protocol\ReceiveFilterList.cs" />
-    <Compile Include="Protocol\ReceiveFilters\CiscoMxSxSeries\CiscoCommuRequestInfo.cs" />
     <Compile Include="Protocol\ReceiveFilters\CiscoMxSxSeries\CiscoInRoomControlReceiveFilter.cs" />
+    <Compile Include="Protocol\VedioConferenceRequestInfo.cs" />
+    <Compile Include="VedioConferenceAppServer.cs" />
+    <Compile Include="VedioConferenceAppSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\App.config" />
