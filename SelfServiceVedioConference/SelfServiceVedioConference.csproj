@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\ICiscoMxSxSeriesCommand.cs" />
     <Compile Include="config\DeviceConfig.cs" />
     <Compile Include="Device\DeviceType.cs" />
     <Compile Include="Program.cs" />

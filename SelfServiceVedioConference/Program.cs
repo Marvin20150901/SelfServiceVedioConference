@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SelfServiceVedioConference.config;
+using SelfServiceVedioConference.Protocol;
 using SuperSocket;
 using SuperSocket.SocketBase;
 using SuperSocket.Common;
@@ -21,10 +22,10 @@ namespace SelfServiceVedioConference
         static void Main(string[] args)
         {
 
-            /*
+            
               Console.WriteLine("program has start...{0}", DateTime.Now);
 
-              var appServer=new AppServer();
+              var appServer=new VedioConferenceAppServer();
 
               if (! appServer.Setup(2010))
               {
@@ -39,6 +40,8 @@ namespace SelfServiceVedioConference
                   Console.ReadKey();
                   return;
               }
+
+              Console.WriteLine("it's Ok");
 
 
               appServer.NewSessionConnected += AppServer_NewSessionConnected;
@@ -55,7 +58,7 @@ namespace SelfServiceVedioConference
 
               Console.WriteLine("the server has stoped");
               Console.ReadKey();
-              */
+             
 
              
 //            Console.WriteLine("{0}",temp.DeviceReceiveFilterTypes);
@@ -90,11 +93,14 @@ namespace SelfServiceVedioConference
             */
 
 
-            string t = "\r\n** end";
-            string o = "*e UserInterface Extensions Event Changed Signal: \"togglebutton:on\"\r\n** end";
+//            string t = "\r\n** end";
+//            string o = "*e UserInterface Extensions Event Changed Signal: \"togglebutton:on\"\r\n** end";
 
 
-            Console.WriteLine(o.IndexOf(t));
+//            Console.WriteLine(o.IndexOf(t));
+            
+
+
 
 
 
@@ -104,36 +110,16 @@ namespace SelfServiceVedioConference
 
         }
 
-        private static void AppServer_NewRequestReceived(AppSession session, StringRequestInfo requestInfo)
+        private static void AppServer_NewRequestReceived(VedioConferenceAppSession session, VedioConferenceRequestInfo requestInfo)
         {
-            switch (requestInfo.Key)
-            {
-                case ("ECHO"):
-                    session.Send(requestInfo.Body);
-                    break;
-
-                case ("ADD"):
-                    session.Send(requestInfo.Parameters.Select(p => Convert.ToInt32(p)).Sum().ToString());
-                    break;
-
-                case ("MULT"):
-
-                    var result = 1;
-
-                    foreach (var factor in requestInfo.Parameters.Select(p => Convert.ToInt32(p)))
-                    {
-                        result *= factor;
-                    }
-
-                    session.Send(result.ToString());
-                    break;
-
-            }
+            //session.Send("{0},    {1}", session.DeviceType, session.DeviceRoom);
+            session.Send("{0} ----{1}-------{2}",requestInfo.Key,requestInfo.EventType,requestInfo.Parameter);
         }
 
-        private static void AppServer_NewSessionConnected(AppSession session)
+        private static void AppServer_NewSessionConnected(VedioConferenceAppSession session)
         {
-            session.Send("you have connected the server1");
+            session.Send("{0},    {1}\r\n",session.DeviceType,session.DeviceRoom);
         }
     }
 }
+

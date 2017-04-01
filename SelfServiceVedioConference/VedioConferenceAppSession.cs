@@ -18,7 +18,7 @@ namespace SelfServiceVedioConference
         public string Port { get; set; }
 
 
-        private bool m_AppendNewLineForResponse = false;
+        private bool m_AppendNewLineForResponse = true;
 
         private static string m_NewLine = "\r\n";
 
@@ -26,6 +26,9 @@ namespace SelfServiceVedioConference
         protected override void OnSessionStarted()
         {
             base.OnSessionStarted();
+
+            this.DeviceType = "Cisco";
+            this.DeviceRoom = "311";
         }
 
 

@@ -10,7 +10,7 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
 
 
         public static readonly string Terminator = "\r\n** end";
-        public static readonly string[] ParameterSpliters ={@" "};
+        public static readonly string[] ParameterSpliters ={@" ","\r\n"};
 
 
         public static readonly string EventsOfWidgetAction = "*e UserInterface Extensions Event";
@@ -44,21 +44,69 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
                 dataStr = Encoding.ASCII.GetString(data, offset, length);
                 parasStr = dataStr.Split(ParameterSpliters, StringSplitOptions.RemoveEmptyEntries);
 
-                if (parasStr[0]==@"*e")
+                var session = this.Session as VedioConferenceAppSession;
+
+                if (session==null)
                 {
-                    
-                }
-                else if (parasStr[0]==@"*s")
-                {
-                    
+                    requestInfo = new VedioConferenceRequestInfo();
                 }
                 else
                 {
-                    
+                    if (parasStr[0] == @"*e")
+                    {
+                        if (dataStr.Contains(EventsOfWidgetAction))
+                        {
+
+                            //Command key:Devicetype_DeviceRoom_EventType
+                            requestInfo = new VedioConferenceRequestInfo()
+                            {
+                                Key = session.DeviceType + @"_" + session.DeviceRoom + @"_" + @"InterfaceEvent",
+                                DeviceType = session.DeviceType,
+                                EventType = @"InterfaceEvent",
+                                Parameter = dataStr
+                            };
+                        }
+                        else if (dataStr.Contains(EventsForPanelUpdate))
+                        {
+                            requestInfo = new VedioConferenceRequestInfo()
+                            {
+
+                                Key = session.DeviceType + @"_" + session.DeviceRoom + @"_InterfaceLayoutUpdated",
+                                DeviceType = session.DeviceType,
+                                EventType = @"InterfaceLayoutUpadted",
+                                Parameter = dataStr
+                            };
+                        }
+                        else
+                        {
+                            requestInfo = new VedioConferenceRequestInfo()
+                            {
+                                Key = session.DeviceType + @"_" + session.DeviceRoom + @"_EventFeedback",
+                                DeviceType = session.DeviceType,
+                                EventType = @"EventFeedback",
+                                Parameter = dataStr
+                            };
+                        }
+
+                    }
+                    else if (parasStr[0] == @"*s")
+                    {
+                        requestInfo = new VedioConferenceRequestInfo()
+                        {
+                            Key = session.DeviceType + @"_" + session.DeviceRoom + @"_" + parasStr[1],
+                            DeviceType = session.DeviceType,
+                            EventType = parasStr[1],
+                            Parameter = dataStr
+                        };
+                    }
+                    else
+                    {
+                        requestInfo = new VedioConferenceRequestInfo();
+                    }
                 }
             }
 
-
+                
             return requestInfo;
         }
     }
