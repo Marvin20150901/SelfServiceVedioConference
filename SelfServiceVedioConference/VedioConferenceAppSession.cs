@@ -25,12 +25,18 @@ namespace SelfServiceVedioConference
 
         protected override void OnSessionStarted()
         {
+            
             base.OnSessionStarted();
 
-            this.DeviceType = "Cisco";
-            this.DeviceRoom = "311";
+            
         }
 
+
+
+        protected override void OnInit()
+        {
+            base.OnInit();
+        }
 
         protected override void HandleUnknownRequest(VedioConferenceRequestInfo requestInfo)
         {

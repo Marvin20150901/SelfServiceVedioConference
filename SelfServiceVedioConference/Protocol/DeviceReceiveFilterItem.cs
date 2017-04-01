@@ -1,4 +1,5 @@
-﻿using SelfServiceVedioConference.Device;
+﻿using System;
+using SelfServiceVedioConference.Device;
 using SuperSocket.SocketBase.Protocol;
 
 namespace SelfServiceVedioConference.Protocol
@@ -13,14 +14,14 @@ namespace SelfServiceVedioConference.Protocol
         /// <summary>
         /// 
         /// </summary>
-        public IReceiveFilter<IRequestInfo> ReceiveFilter { get; set; }
+        public Type ReceiveFilter { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="type"></param>
         /// <param name="receiveFilter"></param>
-        public DeviceReceiveFilterItem (string type, IReceiveFilter<IRequestInfo> receiveFilter)
+        public DeviceReceiveFilterItem (string type, Type receiveFilter)
         {
             this.DeviceTypeItem = type;
             this.ReceiveFilter = receiveFilter;

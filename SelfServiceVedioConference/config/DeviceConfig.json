@@ -1,15 +1,39 @@
 ﻿{
   "ConfigName": "Faw-vw Vedio Conference",
-  "DeviceTypes": [ "Cisco MX800", "Cisco MX300", "Cisco SX80", "Sharp D540XA", "Vedio Switch" ],
-  "ReceiveFilterTypes": ["ReceiveFilterForCiscoMx","ReceiveFilterForCiscoSx","ReceiveFilterForSharpD540","ReceiveFilterForVedioSwitch"], 
+  "DeviceTypes": [ "CiscoMX800", "CiscoMX300", "CiscoSX80", "SharpD540XA", "VedioSwitch" ],
+  "ReceiveFilterTypes": ["CiscoInRoomControlReceiveFilter","ReceiveFilterForSharpD540","ReceiveFilterForVedioSwitch"],
   "DeviceReceiveFilterTypes": [
     {
-      "DeviceType": "Cisco MX800",
-      "ReceiveFilterType": "ReceiveFilter MX800"
+      "DeviceType": "CiscoMX800",
+      "ReceiveFilterType": "CiscoInRoomControlReceiveFilter"
     },
     {
-      "DeviceType": "Cisco MX300",
-      "ReceiveFilterType": "ReceiveFilter MX300"
+      "DeviceType": "CiscoMX300",
+      "ReceiveFilterType": "CiscoInRoomControlReceiveFilter"
+    },
+    {
+      "DeviceType": "VedioSwitch",
+      "ReceiveFilterType": "CiscoInRoomControlReceiveFilter"
     }
-  ]
+  ],
+  "DeviceInRooms": [
+    {
+      "DeviceRoom": "CD350311",
+      "Devices": [
+        {
+          "DeviceType": "CiscoMX800",
+          "DeviceName": "BD-EC-AO-OF-EO",
+          "DeviceIp": "10.238.96.109",
+          "DevicePort": "27"
+        },
+        {
+          "DeviceType": "VedioSwitch",
+          "DeviceName": "AB-32-01-FF-C0",
+          "DeviceIp": "10.238.96.109",
+          "DevicePort": "30"
+        }
+      ]  
+    }
+  ] 
+
 }

@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using SelfServiceVedioConference.Device;
 using SuperSocket.SocketBase.Protocol;
 
@@ -15,6 +16,6 @@ namespace SelfServiceVedioConference.Protocol
         /// <summary>
         /// Device Type Protocol 
         /// </summary>
-        IReceiveFilter<IRequestInfo> ReceiveFilter { get; }
+       Type ReceiveFilter { get; }
     }
 }

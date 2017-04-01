@@ -32,6 +32,47 @@ namespace SelfServiceVedioConference.config
         public string ReceiveFilterType { get; set; }
     }
 
+    [DataContract]
+    public class DevicesItem
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DeviceType { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DeviceName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DeviceIp { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DevicePort { get; set; }
+    }
+
+    [DataContract]
+    public class DeviceInRoomItem
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DeviceRoom { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<DevicesItem> Devices { get; set; }
+    }
+
+
 
     [DataContract]
     public class DeviceConfig
@@ -59,6 +100,15 @@ namespace SelfServiceVedioConference.config
         /// </summary>
         [DataMember]
         public List<DeviceReceiveFilterTypesItem> DeviceReceiveFilterTypes { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<DeviceInRoomItem> DeviceInRooms { get; set; }
+
+
     }
 
 

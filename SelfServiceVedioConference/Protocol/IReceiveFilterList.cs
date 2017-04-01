@@ -9,9 +9,10 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SelfServiceVedioConference.Protocol
 {
-    interface IReceiveFilterList
+    public interface IReceiveFilterList
     {
-        Dictionary<string,IReceiveFilter<IRequestInfo>> ResceiveFilterDic { get; }
+        Dictionary<string,Type> ResceiveFilterDic { get; }
+        void AddDeviceRecieveFilterr(IDeviceReceiveFilterItem deviceReceiveFilterItem);
 
     }
 
