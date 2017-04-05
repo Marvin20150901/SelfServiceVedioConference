@@ -106,6 +106,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CD350311\EventFeedback.cs" />
+    <Compile Include="Command\CD350311\InterfaceEventCommand.cs" />
+    <Compile Include="Command\CD350311\InterfaceLayoutUpdatedCommand.cs" />
     <Compile Include="config\DeviceConfig.cs" />
     <Compile Include="config\IVedioConferenceConfig.cs" />
     <Compile Include="config\VedioConferenceConfig.cs" />
@@ -139,9 +142,7 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

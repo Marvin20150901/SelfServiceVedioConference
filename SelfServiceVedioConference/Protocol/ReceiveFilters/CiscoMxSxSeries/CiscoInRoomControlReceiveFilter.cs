@@ -101,7 +101,10 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
                     }
                     else
                     {
-                        requestInfo = new VedioConferenceRequestInfo();
+                        requestInfo = new VedioConferenceRequestInfo()
+                        {
+                            Key = session.DeviceType+@"_"+@"UnknowCommand"
+                        };
                     }
                 }
             }
