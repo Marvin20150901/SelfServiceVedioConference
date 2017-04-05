@@ -52,7 +52,6 @@ namespace SelfServiceVedioConference
                 }
             }
 
-
             base.OnNewSessionConnected(session);
         }
 

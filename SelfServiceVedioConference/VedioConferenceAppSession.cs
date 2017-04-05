@@ -39,21 +39,7 @@ namespace SelfServiceVedioConference
             base.OnInit();
 
 
-            /*
-             string remoteIp = remoteEndPoint.Address.ToString();
-            string remotePort = remoteEndPoint.Port.ToString();
-
-            foreach (var deviceConfigDeviceInRoom in server.VedioConferenceConfig.DeviceConfig.DeviceInRooms)
-            {
-                var device=deviceConfigDeviceInRoom.Devices.FirstOrDefault(t => t.DeviceIp.Contains(remoteIp) || t.DevicePort.Contains(remotePort));
-                if (device!=null && server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic.ContainsKey(device.DeviceType))
-                {
-                    return (IReceiveFilter<TRequestInfo>)Activator.CreateInstance(
-                        server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic[device.DeviceType]);
-                }
-            }
-             
-             */
+           
         }
 
         protected override void HandleUnknownRequest(VedioConferenceRequestInfo requestInfo)

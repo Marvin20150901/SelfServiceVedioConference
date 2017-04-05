@@ -3,7 +3,7 @@ using SuperSocket.SocketBase.Command;
 
 namespace SelfServiceVedioConference.Command.CD350311
 {
-    public class EventFeedback:ICommand<VedioConferenceAppSession,VedioConferenceRequestInfo>
+    public class EventFeedbackCommand:ICommand<VedioConferenceAppSession,VedioConferenceRequestInfo>
     {
         public void ExecuteCommand(VedioConferenceAppSession session, VedioConferenceRequestInfo requestInfo)
         {
