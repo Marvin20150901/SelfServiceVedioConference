@@ -7,11 +7,11 @@ namespace SelfServiceVedioConference.Protocol
 {
     public class ReceiveFilterList: IReceiveFilterList
     {
-        public Dictionary<string,Type> ResceiveFilterDic{ get; set; }
+        public Dictionary<string, IDeviceReceiveFilterItem> ResceiveFilterDic{ get; set; }
 
         public ReceiveFilterList()
         {
-            ResceiveFilterDic=new Dictionary<string, Type>();
+            ResceiveFilterDic=new Dictionary<string, IDeviceReceiveFilterItem>();
         }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace SelfServiceVedioConference.Protocol
         /// <param name="deviceReceiveFilterItem"></param>
         public void AddDeviceRecieveFilterr(IDeviceReceiveFilterItem  deviceReceiveFilterItem)
         {
-            ResceiveFilterDic.Add(deviceReceiveFilterItem.DeviceTypeItem,deviceReceiveFilterItem.ReceiveFilter);            
+            ResceiveFilterDic.Add(deviceReceiveFilterItem.DeviceTypeItem,deviceReceiveFilterItem);            
         }
 
     }

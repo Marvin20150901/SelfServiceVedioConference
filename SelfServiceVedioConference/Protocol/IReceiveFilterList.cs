@@ -11,7 +11,7 @@ namespace SelfServiceVedioConference.Protocol
 {
     public interface IReceiveFilterList
     {
-        Dictionary<string,Type> ResceiveFilterDic { get; }
+        Dictionary<string, IDeviceReceiveFilterItem> ResceiveFilterDic { get; }
         void AddDeviceRecieveFilterr(IDeviceReceiveFilterItem deviceReceiveFilterItem);
 
     }

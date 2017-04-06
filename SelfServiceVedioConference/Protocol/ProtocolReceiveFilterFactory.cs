@@ -30,7 +30,7 @@ namespace SelfServiceVedioConference.Protocol
                 if (device!=null && server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic.ContainsKey(device.DeviceType))
                 {
                     return (IReceiveFilter<TRequestInfo>)Activator.CreateInstance(
-                        server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic[device.DeviceType]);
+                        server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic[device.DeviceType].ReceiveFilter);
                 }
             }
 

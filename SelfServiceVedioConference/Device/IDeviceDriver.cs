@@ -1,4 +1,5 @@
-﻿using SuperSocket.SocketBase;
+﻿using System.Collections.Generic;
+using SuperSocket.SocketBase;
 
 namespace SelfServiceVedioConference.Device
 {
@@ -8,7 +9,7 @@ namespace SelfServiceVedioConference.Device
 
         bool Init();
 
-        bool Heartbeat(bool bTodo, int iTime);
+        bool Heartbeat(int iTime);
 
         bool SetDefaultConfig();
 
@@ -19,6 +20,6 @@ namespace SelfServiceVedioConference.Device
         IAppSession Session { get; }
         IAppServer Server { get; }
 
-        string[] DefaultConfStrings { get; }
+        List<string> DefaultConfStrings { get; }
     }
 }

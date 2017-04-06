@@ -17,5 +17,10 @@ namespace SelfServiceVedioConference.Protocol
         /// Device Type Protocol 
         /// </summary>
        Type ReceiveFilter { get; }
+
+        /// <summary>
+        /// Device type Driver
+        /// </summary>
+        Type DeviceDriver { get; }
     }
 }

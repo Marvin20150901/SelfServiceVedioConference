@@ -2,9 +2,9 @@
 
 namespace SelfServiceVedioConference.Device
 {
-    public interface IDeviceDriverFactory<out TDevice> where TDevice : IDeviceDriver
+    public interface IDeviceDriverFactory
     {
-        TDevice CreatDeviceDriver(IAppSession session, string deviceType);
+        IDeviceDriver CreatDeviceDriver(IAppServer server, IAppSession session, string deviceType);
     }
 
 

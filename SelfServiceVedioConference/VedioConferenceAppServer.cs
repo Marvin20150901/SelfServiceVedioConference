@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Security;
 using System.Windows.Forms.VisualStyles;
 using SelfServiceVedioConference.config;
+using SelfServiceVedioConference.Device;
 using SelfServiceVedioConference.Protocol;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
@@ -14,6 +15,7 @@ namespace SelfServiceVedioConference
     {
 
         public VedioConferenceConfig VedioConferenceConfig { get; set; }
+        public IDeviceDriverFactory DeviceDriverFactory { get; set; }
 
         public VedioConferenceAppServer():base(new ProtocolReceiveFilterFactory<ReceiveFilterList,VedioConferenceRequestInfo>())
         {
@@ -49,8 +51,12 @@ namespace SelfServiceVedioConference
                     session.DeviceIp = remoteIp;
                     session.Port = remotePort;
                     session.DeviceName = device.DeviceName;
+                    session.DeviceDriver = DeviceDriverFactory.CreatDeviceDriver(this, session, device.DeviceType);
+                    break;
                 }
             }
+
+            session.DeviceDriver.Init();
 
             base.OnNewSessionConnected(session);
         }
@@ -58,8 +64,9 @@ namespace SelfServiceVedioConference
         protected override bool Setup(IRootConfig rootConfig, IServerConfig config)
         {
             VedioConferenceConfig=new VedioConferenceConfig();
-            VedioConferenceConfig.Init(this);
-            return base.Setup(rootConfig, config);
+            DeviceDriverFactory=new DeviceDriverFactory();
+            var re=VedioConferenceConfig.Init(this);
+            return base.Setup(rootConfig, config) &&re;
         }
 
     }

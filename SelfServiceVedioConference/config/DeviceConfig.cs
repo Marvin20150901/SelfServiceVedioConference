@@ -30,6 +30,12 @@ namespace SelfServiceVedioConference.config
         
         [DataMember]
         public string ReceiveFilterType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string DeviceDriverType { get; set; }
     }
 
     [DataContract]
@@ -55,6 +61,13 @@ namespace SelfServiceVedioConference.config
         /// </summary>
         [DataMember]
         public string DevicePort { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<string> DeviceDefaultConfig { get; set; }
     }
 
     [DataContract]
@@ -95,6 +108,13 @@ namespace SelfServiceVedioConference.config
         /// </summary>
         [DataMember]
         public List<string> ReceiveFilterTypes { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public List<string> DeviceDriverTypes { get; set; }
+
         /// <summary>
         /// 
         /// </summary>

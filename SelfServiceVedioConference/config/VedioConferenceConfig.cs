@@ -90,11 +90,18 @@ namespace SelfServiceVedioConference.config
             foreach (var deviceConfigDeviceReceiveFilterType in DeviceConfig.DeviceReceiveFilterTypes)
             {
                 var receiveFilter =
-                    typeInAppServer
-                        .FirstOrDefault(t => t.FullName.Contains(deviceConfigDeviceReceiveFilterType.ReceiveFilterType));
-                if (receiveFilter!=null)
+                    typeInAppServer.FirstOrDefault(
+                        t => t.FullName.Contains(deviceConfigDeviceReceiveFilterType.ReceiveFilterType));
+
+                var deviceDriver =
+                    typeInAppServer.FirstOrDefault(
+                        t => t.FullName.Contains(deviceConfigDeviceReceiveFilterType.DeviceDriverType));
+
+                if (receiveFilter!=null && deviceDriver!=null)
                 {
-                    DeviceReceiveFilterList.AddDeviceRecieveFilterr(new DeviceReceiveFilterItem(deviceConfigDeviceReceiveFilterType.DeviceType,receiveFilter));
+                    DeviceReceiveFilterList.AddDeviceRecieveFilterr(
+                        new DeviceReceiveFilterItem(deviceConfigDeviceReceiveFilterType.DeviceType, receiveFilter,
+                            deviceDriver));
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using SelfServiceVedioConference.Protocol;
+﻿using SelfServiceVedioConference.Device;
+using SelfServiceVedioConference.Protocol;
 using SuperSocket.SocketBase;
 
 namespace SelfServiceVedioConference
@@ -16,6 +17,7 @@ namespace SelfServiceVedioConference
         public string DeviceIp { get; set; }
 
         public string Port { get; set; }
+        public IDeviceDriver DeviceDriver { get; set; }
 
 
         private bool m_AppendNewLineForResponse = true;
