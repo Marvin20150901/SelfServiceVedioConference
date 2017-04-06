@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CD350311\CommandReturnCommand.cs" />
     <Compile Include="Command\CD350311\EventFeedbackCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceEventCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceLayoutUpdatedCommand.cs" />

@@ -11,7 +11,7 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
 
         public static readonly string Terminator = "\r\n** end";
         public static readonly string[] ParameterSpliters ={@" ","\r\n"};
-
+        public static readonly string BegingTerminator = @"*";
 
         public static readonly string EventsOfWidgetAction = "*e UserInterface Extensions Event";
         public static readonly string EventsForPanelUpdate = "*e UserInterface Extensions Widget LayoutUpdated";
@@ -38,13 +38,19 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
             string dataStr = string.Empty;
             string[] parasStr=new string[] {};
             VedioConferenceRequestInfo requestInfo = null;
+            var session = this.Session as VedioConferenceAppSession;
 
             if (length!=0)
             {
                 dataStr = Encoding.ASCII.GetString(data, offset, length);
-                parasStr = dataStr.Split(ParameterSpliters, StringSplitOptions.RemoveEmptyEntries);
 
-                var session = this.Session as VedioConferenceAppSession;
+                if (dataStr.IndexOf(BegingTerminator,StringComparison.Ordinal)<0)
+                {
+                    requestInfo = new VedioConferenceRequestInfo();
+                    return requestInfo;
+                }
+                dataStr = dataStr.Substring(dataStr.IndexOf(BegingTerminator, StringComparison.Ordinal));
+                parasStr = dataStr.Split(ParameterSpliters, StringSplitOptions.RemoveEmptyEntries);
 
                 if (session==null)
                 {
@@ -96,6 +102,16 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
                             Key = session.DeviceType + @"_" + session.DeviceRoom + @"_" + parasStr[1],
                             DeviceType = session.DeviceType,
                             EventType = parasStr[1],
+                            Parameter = dataStr
+                        };
+                    }
+                    else if (parasStr[0]==@"*r")
+                    {
+                        requestInfo=new VedioConferenceRequestInfo()
+                        {
+                            Key = session.DeviceType+@"_"+session.DeviceRoom+@"_CommandReturn",
+                            DeviceType = session.DeviceType,
+                            EventType = @"CommandReturn",
                             Parameter = dataStr
                         };
                     }

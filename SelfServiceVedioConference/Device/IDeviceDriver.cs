@@ -11,5 +11,9 @@
         bool OpenDevice();
 
         bool CloseDevice();
+        bool SetDefaultConfig();
+
+
+
     }
 }
