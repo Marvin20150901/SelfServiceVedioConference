@@ -24,7 +24,11 @@
           "DeviceType": "CiscoMX800",
           "DeviceName": "BD-EC-AO-OF-EO",
           "DeviceIp": "10.238.96.109",
-          "DevicePort": "27"
+          "DevicePort": "27",
+          "DeviceDefaultConfig": [
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_InputSource\" Value: \"1\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"1\""
+          ]
         },
         {
           "DeviceType": "VedioSwitch",
