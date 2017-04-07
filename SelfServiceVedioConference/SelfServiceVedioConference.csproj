@@ -110,6 +110,7 @@
     <Compile Include="Command\CD350311\EventFeedbackCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceEventCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceLayoutUpdatedCommand.cs" />
+    <Compile Include="Command\CD350311\StatusFeedbackCommand.cs" />
     <Compile Include="Command\CD350311\VedioSwitchEventCommand.cs" />
     <Compile Include="config\DeviceConfig.cs" />
     <Compile Include="config\IVedioConferenceConfig.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Device\DeviceType.cs" />
     <Compile Include="Device\IDeviceDriver.cs" />
     <Compile Include="Device\IDeviceDriverFactory.cs" />
+    <Compile Include="Device\VedioSwitchDevice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\DeviceReceiveFilterItem.cs" />

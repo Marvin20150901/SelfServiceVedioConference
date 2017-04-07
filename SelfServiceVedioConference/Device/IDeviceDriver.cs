@@ -5,7 +5,7 @@ namespace SelfServiceVedioConference.Device
 {
     public interface IDeviceDriver
     {
-        string DeviceType { get; }
+        string DeviceType { get; set; }
 
         bool Init();
 
@@ -13,13 +13,13 @@ namespace SelfServiceVedioConference.Device
 
         bool SetDefaultConfig();
 
-        bool IsTimeoutConnect { get; }
+        bool IsTimeoutConnect { get; set; }
 
-        DeviceState DeviceState { get; }
+        DeviceState DeviceState { get; set; }
 
-        IAppSession Session { get; }
-        IAppServer Server { get; }
+        IAppSession Session { get; set; }
+        IAppServer Server { get; set; }
 
-        List<string> DefaultConfStrings { get; }
+        List<string> DefaultConfStrings { get; set; }
     }
 }

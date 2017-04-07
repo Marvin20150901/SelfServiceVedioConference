@@ -51,8 +51,13 @@ namespace SelfServiceVedioConference
                     session.DeviceIp = remoteIp;
                     session.Port = remotePort;
                     session.DeviceName = device.DeviceName;
-                    session.DeviceDriver = DeviceDriverFactory.CreatDeviceDriver(this, session, device.DeviceType);
+                    session.DeviceDriver = DeviceDriverFactory.CreatDeviceDriver(this, session, device.DeviceType,device.DeviceDefaultConfig);
                     break;
+                }
+                else
+                {
+                    session.Close();
+                    return;
                 }
             }
 

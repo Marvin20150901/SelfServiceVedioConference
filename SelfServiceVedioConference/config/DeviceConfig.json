@@ -12,12 +12,12 @@
     {
       "DeviceType": "CiscoMX300",
       "ReceiveFilterType": "CiscoInRoomControlReceiveFilter",
-      "DeviceDriverType": "CiscoMX300Device"
+      "DeviceDriverType": "CiscoMX800Device"
     },
     {
       "DeviceType": "VedioSwitch",
-      "ReceiveFilterType": "CiscoInRoomControlReceiveFilter",
-      "DeviceDriverType": "VedioSwitchDevice"
+      "ReceiveFilterType": "VedioSwitchInRoomControlReceiveFilter",
+      "DeviceDriverType": "CiscoMX800Device"
     }
   ],
   "DeviceInRooms": [
@@ -25,21 +25,24 @@
       "DeviceRoom": "CD350311",
       "Devices": [
         {
-          "DeviceType": "CiscoMX800",
+          "DeviceType": "VedioSwitch",
           "DeviceName": "BD-EC-AO-OF-EO",
           "DeviceIp": "10.238.96.109",
           "DevicePort": "27",
           "DeviceDefaultConfig": [
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_InputSource\" Value: \"1\"",
-            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"1\""
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"1\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"active\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_InputSource\" Value: \"1\""
           ]
         },
         {
-          "DeviceType": "VedioSwitch",
+          "DeviceType": "CiscoMX800",
           "DeviceName": "AB-32-01-FF-C0",
           "DeviceIp": "10.238.96.109",
           "DevicePort": "30",
-          "DeviceDefaultConfig": [] 
+          "DeviceDefaultConfig": []
         }
       ]  
     }

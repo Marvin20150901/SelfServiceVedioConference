@@ -46,7 +46,10 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
 
                 if (dataStr.IndexOf(BegingTerminator,StringComparison.Ordinal)<0)
                 {
-                    requestInfo = new VedioConferenceRequestInfo();
+                    requestInfo = new VedioConferenceRequestInfo()
+                    {
+                        Key = @"UnknowCommand"
+                    };
                     return requestInfo;
                 }
                 dataStr = dataStr.Substring(dataStr.IndexOf(BegingTerminator, StringComparison.Ordinal));
@@ -99,9 +102,9 @@ namespace SelfServiceVedioConference.Protocol.ReceiveFilters.CiscoMxSxSeries
                     {
                         requestInfo = new VedioConferenceRequestInfo()
                         {
-                            Key = session.DeviceType + @"_" + session.DeviceRoom + @"_" + parasStr[1],
+                            Key = session.DeviceType + @"_" + session.DeviceRoom + @"_" + @"StatusFeedback",
                             DeviceType = session.DeviceType,
-                            EventType = parasStr[1],
+                            EventType = @"StatusFeedback",
                             Parameter = dataStr
                         };
                     }

@@ -105,7 +105,7 @@ namespace SelfServiceVedioConference.config
                 }
                 else
                 {
-                    AppServer.Logger.Error("DLL don't have the one device receivefilter");
+                    AppServer.Logger.Error("DLL don't have the one device receivefilter or DeviceDriverType");
                     return false;
                 }
             }
