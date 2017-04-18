@@ -43,7 +43,7 @@ namespace SelfServiceVedioConference
 
             foreach (var deviceConfigDeviceInRoom in this.VedioConferenceConfig.DeviceConfig.DeviceInRooms)
             {
-                var device = deviceConfigDeviceInRoom.Devices.FirstOrDefault(t => t.DeviceIp.Contains(remoteIp) || t.DevicePort.Contains(remotePort));
+                var device = deviceConfigDeviceInRoom.Devices.FirstOrDefault(t => t.DeviceIp.Contains(remoteIp) && t.DevicePort.Contains(remotePort));
                 if (device != null && this.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic.ContainsKey(device.DeviceType))
                 {
                     session.DeviceType = device.DeviceType;
@@ -57,12 +57,14 @@ namespace SelfServiceVedioConference
                 else
                 {
                     session.Close();
+                    Console.WriteLine("{0}---Unknow Seesion---{1}",session.RemoteEndPoint.Address,session.RemoteEndPoint.Port);
                     return;
                 }
             }
 
             session.DeviceDriver.Init();
-
+            Console.WriteLine("{0}------{1}",session.DeviceRoom,session.DeviceType);
+            Console.WriteLine("server has session {0}", this.GetAllSessions().Count());
             base.OnNewSessionConnected(session);
         }
 

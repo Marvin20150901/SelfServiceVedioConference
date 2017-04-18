@@ -26,7 +26,7 @@ namespace SelfServiceVedioConference.Protocol
 
             foreach (var deviceConfigDeviceInRoom in server.VedioConferenceConfig.DeviceConfig.DeviceInRooms)
             {
-                var device=deviceConfigDeviceInRoom.Devices.FirstOrDefault(t => t.DeviceIp.Contains(remoteIp) || t.DevicePort.Contains(remotePort));
+                var device=deviceConfigDeviceInRoom.Devices.FirstOrDefault(t => t.DeviceIp.Contains(remoteIp) && t.DevicePort.Contains(remotePort));
                 if (device!=null && server.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic.ContainsKey(device.DeviceType))
                 {
                     return (IReceiveFilter<TRequestInfo>)Activator.CreateInstance(

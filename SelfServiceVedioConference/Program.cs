@@ -43,20 +43,6 @@ namespace SelfServiceVedioConference
                   return;
               }
 
-            foreach (var deviceInRoomItem in appServer.VedioConferenceConfig.DeviceConfig.DeviceInRooms)
-            {
-                Console.WriteLine("--------{0}--------", deviceInRoomItem.DeviceRoom);
-                foreach (var devicesItem in deviceInRoomItem.Devices)
-                {
-                    Console.WriteLine("{0}-----------{1}", devicesItem.DeviceName, devicesItem.DeviceType);
-                }
-            }
-
-            foreach (var receiveFilter in appServer.VedioConferenceConfig.DeviceReceiveFilterList.ResceiveFilterDic)
-            {
-                    Console.WriteLine("*******{0}-----{1}*****",receiveFilter.Key,receiveFilter.Value);
-            }
-
             Console.WriteLine("it's Ok");
 
 
@@ -66,7 +52,7 @@ namespace SelfServiceVedioConference
 
               while (Console.ReadKey().KeyChar!='Q')
               {
-                  Console.WriteLine();
+                  Console.WriteLine("{0}",appServer.GetAllSessions().Count());
                   continue;
               }
 

@@ -1,4 +1,5 @@
-﻿using SelfServiceVedioConference.Protocol;
+﻿using System;
+using SelfServiceVedioConference.Protocol;
 using SuperSocket.SocketBase.Command;
 
 namespace SelfServiceVedioConference.Command.CD350311
@@ -8,7 +9,9 @@ namespace SelfServiceVedioConference.Command.CD350311
         public void ExecuteCommand(VedioConferenceAppSession session, VedioConferenceRequestInfo requestInfo)
         {
             //throw new System.NotImplementedException();
-            session.Send(requestInfo.Parameter);
+            //session.Send(requestInfo.Parameter);
+
+            Console.WriteLine(requestInfo.Parameter);
         }
 
         public string Name => @"CiscoMX800_CD350311_StatusFeedback";

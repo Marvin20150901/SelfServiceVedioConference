@@ -73,6 +73,8 @@ namespace SelfServiceVedioConference.Device
                 {
                     (Session as VedioConferenceAppSession)?.Send(defaultConfString);
                 }
+
+                return true;
             }
 
             return false;

@@ -17,7 +17,7 @@
     {
       "DeviceType": "VedioSwitch",
       "ReceiveFilterType": "VedioSwitchInRoomControlReceiveFilter",
-      "DeviceDriverType": "CiscoMX800Device"
+      "DeviceDriverType": "VedioSwitchDevice"
     },
     {
       "DeviceType": "SharpD540XA",
@@ -32,28 +32,30 @@
         {
           "DeviceType": "CiscoMX800",
           "DeviceName": "BD-EC-AO-OF-EO",
-          "DeviceIp": "10.238.96.109",
-          "DevicePort": "27",
+          "DeviceIp": "10.238.112.34",
+          "DevicePort": "2001",
           "DeviceDefaultConfig": [
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_InputSource\" Value: \"1\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"1\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"active\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"inactive\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"inactive\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_InputSource\" Value: \"1\""
           ]
         },
         {
           "DeviceType": "VedioSwitch",
           "DeviceName": "AB-32-01-FF-C0",
-          "DeviceIp": "10.238.96.109",
-          "DevicePort": "30",
+          "DeviceIp": "10.238.112.34",
+          "DevicePort": "2002",
           "DeviceDefaultConfig": []
         },
         {
           "DeviceType": "SharpD540XA",
-          "DeviceName": "AB-32-01-FF-C0",
-          "DeviceIp": "10.238.96.109",
-          "DevicePort": "31",
+          "DeviceName": "AC-32-0D-FF-C0",
+          "DeviceIp": "10.238.112.34",
+          "DevicePort": "2003",
           "DeviceDefaultConfig": []
         }
       ]  
