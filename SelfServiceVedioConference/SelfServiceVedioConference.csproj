@@ -110,6 +110,7 @@
     <Compile Include="Command\CD350311\EventFeedbackCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceEventCommand.cs" />
     <Compile Include="Command\CD350311\InterfaceLayoutUpdatedCommand.cs" />
+    <Compile Include="Command\CD350311\PorjectorFeedbackEvent.cs" />
     <Compile Include="Command\CD350311\StatusFeedbackCommand.cs" />
     <Compile Include="Command\CD350311\VedioSwitchEventCommand.cs" />
     <Compile Include="config\DeviceConfig.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Device\DeviceType.cs" />
     <Compile Include="Device\IDeviceDriver.cs" />
     <Compile Include="Device\IDeviceDriverFactory.cs" />
+    <Compile Include="Device\SharpD540XADevice.cs" />
     <Compile Include="Device\VedioSwitchDevice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,12 +131,14 @@
     <Compile Include="Protocol\ProtocolReceiveFilterFactory.cs" />
     <Compile Include="Protocol\ReceiveFilterList.cs" />
     <Compile Include="Protocol\ReceiveFilters\CiscoMxSxSeries\CiscoInRoomControlReceiveFilter.cs" />
+    <Compile Include="Protocol\ReceiveFilters\Porjector\SharpD540XAReceiveFilter.cs" />
     <Compile Include="Protocol\ReceiveFilters\VedioSwitch\VedioSwitchInRoomControlReceiveFilter.cs" />
     <Compile Include="Protocol\VedioConferenceRequestInfo.cs" />
     <Compile Include="VedioConferenceAppServer.cs" />
     <Compile Include="VedioConferenceAppSession.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReadMe.txt" />
     <None Include="config\App.config" />
     <Content Include="config\log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

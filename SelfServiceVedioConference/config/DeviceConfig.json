@@ -1,7 +1,7 @@
 ﻿{
   "ConfigName": "Faw-vw Vedio Conference",
   "DeviceTypes": [ "CiscoMX800", "CiscoMX300", "CiscoSX80", "SharpD540XA", "VedioSwitch" ],
-  "ReceiveFilterTypes": [ "CiscoInRoomControlReceiveFilter", "ReceiveFilterForSharpD540", "ReceiveFilterForVedioSwitch" ],
+  "ReceiveFilterTypes": [ "CiscoInRoomControlReceiveFilter", "VedioSwitchInRoomControlReceiveFilter", "ReceiveFilterForVedioSwitch" ],
   "DeviceDriverTypes": ["CiscoMX800Device","VedioSwitchDevice"],
   "DeviceReceiveFilterTypes": [
     {
@@ -22,7 +22,7 @@
     {
       "DeviceType": "SharpD540XA",
       "ReceiveFilterType": "VedioSwitchInRoomControlReceiveFilter",
-      "DeviceDriverType": "CiscoMX800Device"
+      "DeviceDriverType": "SharpD540XADevice"
     }
   ],
   "DeviceInRooms": [
@@ -36,7 +36,7 @@
           "DevicePort": "2001",
           "DeviceDefaultConfig": [
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_InputSource\" Value: \"1\"",
-            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"1\"",
+            "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_ConferenceMode\" Value: \"2\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"active\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"inactive\"",
             "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"",

@@ -24,7 +24,7 @@ namespace SelfServiceVedioConference.Device
 
             if (appSession != null && appServer != null)
             {
-                appSession.Send(@"ALL#.");
+                appSession.Send(@"1V1.1V7.");
                 //appSession.Send("xCommand Peripherals HeartBeat ID:\"{0}\" Timeout: {1}", appServer.VedioConferenceConfig.DeviceConfig.ConfigName, HeartbeatTime + 30);
 
                 Heartbeat(HeartbeatTime);
@@ -48,7 +48,7 @@ namespace SelfServiceVedioConference.Device
                 {
                     while (true)
                     {
-                        appSession.Send(@"/*ready");
+                        appSession.Send(@"/*ready.");
                         appSession.DeviceDriver.IsTimeoutConnect = true;
                         System.Threading.Thread.Sleep(iTime * 1000);
                         if (appSession.DeviceDriver.IsTimeoutConnect)
@@ -83,12 +83,19 @@ namespace SelfServiceVedioConference.Device
 
         public bool IsTimeoutConnect { get; set; }
 
+        public bool SetCloseDefaultConfig()
+        {
+            //throw new NotImplementedException();
+            return true;
+        }
+
         public DeviceState DeviceState { get; set; }
 
         public IAppSession Session { get; set; }
         public IAppServer Server { get; set; }
 
         public List<string> DefaultConfStrings { get; set; }
+        public List<string> DefaultCloseConfStrings { get; set; }
 
 
         public VedioSwitchDevice(IAppSession session, IAppServer server, List<string> defaultConfigStringList)

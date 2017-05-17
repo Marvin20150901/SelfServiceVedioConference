@@ -11,7 +11,7 @@ namespace SelfServiceVedioConference.Command.CD350311
            //throw new System.NotImplementedException();
            Console.WriteLine(requestInfo.Parameter+@"-------vedio conference");
 
-           if (requestInfo.Parameter.Contains(@"*/OK."))
+           if (requestInfo.Parameter.Contains(@"/*OK."))
            {
                 session.DeviceDriver.IsTimeoutConnect = false;
                 return;

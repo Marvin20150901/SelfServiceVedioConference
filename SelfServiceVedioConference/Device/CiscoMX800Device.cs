@@ -23,6 +23,7 @@ namespace SelfServiceVedioConference.Device
 
             if (appSession!=null && appServer!=null)
             {
+                //register this device 
                 appSession.Send("xCommand Peripherals Connect ID:\"{0}\" Type:ControlSystem",appServer.VedioConferenceConfig.DeviceConfig.ConfigName);
                 appSession.Send("xCommand Peripherals HeartBeat ID:\"{0}\" Timeout: {1}", appServer.VedioConferenceConfig.DeviceConfig.ConfigName,HeartbeatTime+30);
 
@@ -30,6 +31,7 @@ namespace SelfServiceVedioConference.Device
                 SetDefaultConfig();
 
                 appSession.Send(@"xfeedback register event/UserInterface/Extensions/Event");
+                appSession.Send(@"xfeedback register /Status/Standby");
                 return true;
             }
 
@@ -81,11 +83,17 @@ namespace SelfServiceVedioConference.Device
         }
 
         public bool IsTimeoutConnect { get; set; }
+        public bool SetCloseDefaultConfig()
+        {
+            //throw new NotImplementedException();
+            return true;
+        }
+
         public DeviceState DeviceState { get; set; }
         public IAppSession Session { get; set; }
         public IAppServer Server { get; set; }
         public List<string> DefaultConfStrings { get; set; }
-
+        public List<string> DefaultCloseConfStrings { get; set; }
 
 
         public CiscoMX800Device(IAppSession session, IAppServer server, List<string> defaultConfigStringList)
@@ -93,8 +101,6 @@ namespace SelfServiceVedioConference.Device
             Session = session;
             Server = server;
             DefaultConfStrings = defaultConfigStringList;
-
-
         }
 
         public CiscoMX800Device()

@@ -17,7 +17,7 @@ namespace SelfServiceVedioConference.Command.CD350311
             Console.WriteLine(requestInfo.Parameter);
          
 
-            if (requestInfo.Parameter.Contains("Pressed") && requestInfo.Parameter.Contains("H_InputSource"))
+            if (requestInfo.Parameter.Contains("Pressed") && (requestInfo.Parameter.Contains("H_InputSource") || requestInfo.Parameter.Contains("G_InputSource")))
             {
                 
                 var s =
@@ -25,27 +25,31 @@ namespace SelfServiceVedioConference.Command.CD350311
                         t => t.DeviceType == @"VedioSwitch" && t.DeviceRoom == session.DeviceRoom);
                 foreach (var conferenceAppSession in s)
                 {
-                    if (requestInfo.Parameter.Contains("H_InputSource:2"))
+                    if (requestInfo.Parameter.Contains("H_InputSource:2") || requestInfo.Parameter.Contains("G_InputSource:2"))
                     {
-                        conferenceAppSession.Send(@"1v2.");//input source is zhantai ,need change the vedioSwitch
+                        conferenceAppSession.Send(@"7V1.7V7.");//input source is zhantai ,need change the vedioSwitch
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"2\"");
+                        session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"2\"");
                     }
                     else
                     {
-                        conferenceAppSession.Send(@"2v2.");//dafault is the computer
+                        conferenceAppSession.Send(@"1V7.1V1.");//dafault is the computer
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
+                        session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
                     }                                       
                 }
 
                 return;
             }
 
-            if (requestInfo.Parameter.Contains("Clicked") && requestInfo.Parameter.Contains("H_OnPorjector"))
+            //Porjector on contriol
+            if (requestInfo.Parameter.Contains("Clicked") && (requestInfo.Parameter.Contains("H_OnPorjector")|| requestInfo.Parameter.Contains("G_OnPorjector")))
             {
-                session.Send(
-                    "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"active\"");
-                session.Send(
-                    "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"inactive\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"active\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"inactive\"");
+
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"active\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"inactive\"");
 
                 var orDefault =
                     session.AppServer.GetSessions(
@@ -56,12 +60,14 @@ namespace SelfServiceVedioConference.Command.CD350311
                 return;
             }
 
-            if (requestInfo.Parameter.Contains("Clicked") && requestInfo.Parameter.Contains("H_OffPorjector"))
+            //Porjector off contriol
+            if (requestInfo.Parameter.Contains("Clicked") && (requestInfo.Parameter.Contains("H_OffPorjector") || requestInfo.Parameter.Contains("G_OffPorjector")))
             {
-                session.Send(
-                    "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"");
-                session.Send(
-                    "xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"inactive\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"inactive\"");
+
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"active\"");
+                session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"inactive\"");
 
                 var orDefault =
                     session.AppServer.GetSessions(
@@ -71,7 +77,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                 return;
             }
 
-            //
+            //conference mode function
             if (requestInfo.Parameter.Contains("Released") && requestInfo.Parameter.Contains("H_ConferenceMode"))
             {
                 var inSource =
@@ -84,21 +90,35 @@ namespace SelfServiceVedioConference.Command.CD350311
                 if (requestInfo.Parameter.Contains("H_ConferenceMode:1"))
                 {
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_ConferenceMode\" Value:\"1\"");
-                    inSource?.Send(@"1V2.");
+                    inSource?.Send(@"1V7.1V1.");
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
+
                     sharp?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x31, 0x0D }, 0, 9);
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"active\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"inactive\"");
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"active\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"inactive\"");
                 }
                 else
                 {
-                    inSource?.Send(@"1V2.");
+                    inSource?.Send(@"1V1.");
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
+
                     sharp?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x30, 0x0D }, 0, 9);
-
-                    if (requestInfo.Parameter.Contains("H_ConferenceMode:3"))
-                    {
-                        session.Send(
-                        "xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_ConferenceMode\" Value:\"2\"");
-                    }
-
+                    
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_ConferenceMode\" Value:\"2\"");
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"active\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"inactive\"");
+
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OffPorjector\" Value: \"active\"");
+                    session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"G_OnPorjector\" Value: \"inactive\"");
                 }
 
                 return;

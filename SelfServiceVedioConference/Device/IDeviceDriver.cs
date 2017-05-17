@@ -15,11 +15,14 @@ namespace SelfServiceVedioConference.Device
 
         bool IsTimeoutConnect { get; set; }
 
+        bool SetCloseDefaultConfig();
+
         DeviceState DeviceState { get; set; }
 
         IAppSession Session { get; set; }
         IAppServer Server { get; set; }
 
         List<string> DefaultConfStrings { get; set; }
+        List<string> DefaultCloseConfStrings { get; set; }
     }
 }
