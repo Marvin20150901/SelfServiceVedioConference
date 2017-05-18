@@ -75,6 +75,13 @@ namespace SelfServiceVedioConference
 
 
 
+
+        public void SendNoNewLine(string message)
+        {
+            
+            base.Send(message);
+        }
+
         public override void Send(string message)
         {
             base.Send(ProcessSendingMessage(message));

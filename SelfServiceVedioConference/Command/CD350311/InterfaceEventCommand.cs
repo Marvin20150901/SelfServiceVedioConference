@@ -27,13 +27,13 @@ namespace SelfServiceVedioConference.Command.CD350311
                 {
                     if (requestInfo.Parameter.Contains("H_InputSource:2") || requestInfo.Parameter.Contains("G_InputSource:2"))
                     {
-                        conferenceAppSession.Send(@"7V1.7V7.");//input source is zhantai ,need change the vedioSwitch
+                        conferenceAppSession.SendNoNewLine(@"7B1,7.");//input source is zhantai ,need change the vedioSwitch
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"2\"");
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"2\"");
                     }
                     else
                     {
-                        conferenceAppSession.Send(@"1V7.1V1.");//dafault is the computer
+                        conferenceAppSession.SendNoNewLine(@"1B1,7.");//dafault is the computer
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
                         session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
                     }                                       
@@ -90,7 +90,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                 if (requestInfo.Parameter.Contains("H_ConferenceMode:1"))
                 {
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_ConferenceMode\" Value:\"1\"");
-                    inSource?.Send(@"1V7.1V1.");
+                    inSource?.SendNoNewLine(@"1B1,7.");
 
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
@@ -105,7 +105,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                 }
                 else
                 {
-                    inSource?.Send(@"1V1.");
+                    inSource?.SendNoNewLine(@"1B1.");
 
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");

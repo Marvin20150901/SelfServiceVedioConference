@@ -24,7 +24,8 @@ namespace SelfServiceVedioConference.Device
 
             if (appSession != null && appServer != null)
             {
-                appSession.Send(@"1V1.1V7.");
+                //appSession.SendNoNewLine(@"1B1.1B7.");
+                //appSession.SendNoNewLine(@"1V1.");
                 //appSession.Send("xCommand Peripherals HeartBeat ID:\"{0}\" Timeout: {1}", appServer.VedioConferenceConfig.DeviceConfig.ConfigName, HeartbeatTime + 30);
 
                 Heartbeat(HeartbeatTime);
@@ -48,7 +49,7 @@ namespace SelfServiceVedioConference.Device
                 {
                     while (true)
                     {
-                        appSession.Send(@"/*ready.");
+                        appSession.SendNoNewLine(@"/*ready.");
                         appSession.DeviceDriver.IsTimeoutConnect = true;
                         System.Threading.Thread.Sleep(iTime * 1000);
                         if (appSession.DeviceDriver.IsTimeoutConnect)
@@ -66,6 +67,10 @@ namespace SelfServiceVedioConference.Device
 
         public bool SetDefaultConfig()
         {
+            var appSession = Session as VedioConferenceAppSession;
+            appSession?.SendNoNewLine(@"1B1,7.");
+            appSession?.SendNoNewLine(@"/:BellOff.");
+
             if (DefaultConfStrings.Count > 0)
             {
                 foreach (var defaultConfString in DefaultConfStrings)
@@ -86,6 +91,8 @@ namespace SelfServiceVedioConference.Device
         public bool SetCloseDefaultConfig()
         {
             //throw new NotImplementedException();
+            var appSession = Session as VedioConferenceAppSession;
+            appSession?.SendNoNewLine(@"1B1,7.");
             return true;
         }
 
