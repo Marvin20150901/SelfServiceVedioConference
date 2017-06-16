@@ -1,8 +1,8 @@
 ﻿{
   "ConfigName": "Faw-vw Vedio Conference",
-  "DeviceTypes": [ "CiscoMX800", "CiscoMX300", "CiscoSX80", "SharpD540XA", "VedioSwitch" ],
+  "DeviceTypes": [ "CiscoMX800", "CiscoMX300", "CiscoSX80", "SharpD540XA", "VedioSwitch","NECPE401"],
   "ReceiveFilterTypes": [ "CiscoInRoomControlReceiveFilter", "VedioSwitchInRoomControlReceiveFilter", "ReceiveFilterForVedioSwitch" ],
-  "DeviceDriverTypes": ["CiscoMX800Device","VedioSwitchDevice"],
+  "DeviceDriverTypes": [ "CiscoMX800Device", "VedioSwitchDevice", "SharpD540XADevice","NECPE401Device"],
   "DeviceReceiveFilterTypes": [
     {
       "DeviceType": "CiscoMX800",
@@ -23,6 +23,11 @@
       "DeviceType": "SharpD540XA",
       "ReceiveFilterType": "VedioSwitchInRoomControlReceiveFilter",
       "DeviceDriverType": "SharpD540XADevice"
+    },
+    {
+      "DeviceType": "NECPE401",
+      "ReceiveFilterType": "VedioSwitchInRoomControlReceiveFilter",
+      "DeviceDriverType": "NECPE401Device"
     }
   ],
   "DeviceInRooms": [
@@ -52,7 +57,7 @@
           "DeviceDefaultConfig": []
         },
         {
-          "DeviceType": "SharpD540XA",
+          "DeviceType": "NECPE401",
           "DeviceName": "AC-32-0D-FF-C0",
           "DeviceIp": "10.238.112.34",
           "DevicePort": "2003",

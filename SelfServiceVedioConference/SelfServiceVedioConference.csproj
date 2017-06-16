@@ -121,6 +121,7 @@
     <Compile Include="Device\DeviceType.cs" />
     <Compile Include="Device\IDeviceDriver.cs" />
     <Compile Include="Device\IDeviceDriverFactory.cs" />
+    <Compile Include="Device\NECPE401Device.cs" />
     <Compile Include="Device\SharpD540XADevice.cs" />
     <Compile Include="Device\VedioSwitchDevice.cs" />
     <Compile Include="Program.cs" />

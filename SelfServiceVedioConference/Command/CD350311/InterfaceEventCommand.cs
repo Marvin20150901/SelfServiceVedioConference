@@ -53,8 +53,8 @@ namespace SelfServiceVedioConference.Command.CD350311
 
                 var orDefault =
                     session.AppServer.GetSessions(
-                        t => t.DeviceType == @"SharpD540XA" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
-                orDefault?.Send(new byte[] {0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x31, 0x0D}, 0, 9);
+                        t => t.DeviceType == @"NECPE401" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
+                orDefault?.Send(new byte[] {0x02, 0x00, 0x00, 0x00, 0x00, 0x02}, 0, 6);
 
 
                 return;
@@ -71,8 +71,8 @@ namespace SelfServiceVedioConference.Command.CD350311
 
                 var orDefault =
                     session.AppServer.GetSessions(
-                        t => t.DeviceType == @"SharpD540XA" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
-                orDefault?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x30, 0x0D }, 0, 9);
+                        t => t.DeviceType == @"NECPE401" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
+                orDefault?.Send(new byte[] {0x02, 0x01, 0x00, 0x00, 0x00, 0x03}, 0, 6);
 
                 return;
             }
@@ -85,7 +85,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                         t => t.DeviceType == @"VedioSwitch" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
                 var sharp =
                     session.AppServer.GetSessions(
-                        t => t.DeviceType == @"SharpD540XA" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
+                        t => t.DeviceType == @"NECPE401" && t.DeviceRoom == session.DeviceRoom).FirstOrDefault();
 
                 if (requestInfo.Parameter.Contains("H_ConferenceMode:1"))
                 {
@@ -95,7 +95,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
 
-                    sharp?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x31, 0x0D }, 0, 9);
+                    sharp?.Send(new byte[] { 0x02, 0x00, 0x00, 0x00, 0x00, 0x02 }, 0, 6);
 
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OnPorjector\" Value: \"active\"");
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId: \"H_OffPorjector\" Value: \"inactive\"");
@@ -110,7 +110,7 @@ namespace SelfServiceVedioConference.Command.CD350311
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_InputSource\" Value:\"1\"");
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"G_InputSource\" Value:\"1\"");
 
-                    sharp?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x30, 0x0D }, 0, 9);
+                    sharp?.Send(new byte[] { 0x02, 0x01, 0x00, 0x00, 0x00, 0x03 }, 0, 6);
                     
                     session.Send("xCommand UserInterface Extensions Widget SetValue WidgetId:\"H_ConferenceMode\" Value:\"2\"");
 

@@ -7,8 +7,9 @@ using SuperSocket.SocketBase;
 
 namespace SelfServiceVedioConference.Device
 {
-    public class SharpD540XADevice:IDeviceDriver
+    class NECPE401Device:IDeviceDriver
     {
+
         public string DeviceType { get; set; }
         public bool Init()
         {
@@ -26,7 +27,7 @@ namespace SelfServiceVedioConference.Device
 
         public bool SetDefaultConfig()
         {
-            (Session as VedioConferenceAppSession)?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x30, 0x0D }, 0, 9);
+            (Session as VedioConferenceAppSession)?.Send(new byte[] { 0x02, 0x01, 0x00, 0x00, 0x00, 0x03}, 0, 6);
 
             if (DefaultConfStrings.Count > 0)
             {
@@ -48,7 +49,7 @@ namespace SelfServiceVedioConference.Device
         public bool IsTimeoutConnect { get; set; } = false;
         public bool SetCloseDefaultConfig()
         {
-            (Session as VedioConferenceAppSession)?.Send(new byte[] { 0x50, 0x4F, 0x57, 0x52, 0x20, 0x20, 0x20, 0x30, 0x0D }, 0, 9);
+            (Session as VedioConferenceAppSession)?.Send(new byte[] { 0x02, 0x01, 0x00, 0x00, 0x00, 0x03 }, 0, 6);
             return true;
         }
 
@@ -58,17 +59,16 @@ namespace SelfServiceVedioConference.Device
         public List<string> DefaultConfStrings { get; set; }
         public List<string> DefaultCloseConfStrings { get; set; }
 
-
-        public SharpD540XADevice(IAppSession session, IAppServer server, List<string> defaultConfigStringList)
+        public NECPE401Device(IAppSession session, IAppServer server, List<string> defaultConfigStringList)
         {
             Session = session;
             Server = server;
             DefaultConfStrings = defaultConfigStringList;
         }
 
-        public SharpD540XADevice()
+        public NECPE401Device()
         {
-            
+
         }
     }
 }
